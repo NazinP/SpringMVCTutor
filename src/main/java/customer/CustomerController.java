@@ -60,4 +60,9 @@ public class CustomerController {
 
         return mav;
     }
+
+    @RequestMapping("/javaschool")
+    public String javaSchoolForm() {
+        return "javaschoolindex";
+    }
 }

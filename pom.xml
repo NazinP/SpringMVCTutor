@@ -17,12 +17,38 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.1.v20140609</version>
+                <executions>
+                    <execution>
+                        <id>start-jetty</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>stop</goal>
+                            <goal>run-war</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <httpConnector>
+                        <port>${test.jetty.port}</port>
+                    </httpConnector>
+                    <webAppConfig>
+                        <contextPath>/index</contextPath>
+                    </webAppConfig>
+                    <stopKey>red</stopKey>
+                    <stopPort>1111</stopPort>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
     <properties>
         <spring.version>5.1.5.RELEASE</spring.version>
         <hibernate.version>5.4.1.Final</hibernate.version>
+        <test.jetty.port>8080</test.jetty.port>
     </properties>
 
     <dependencies>
